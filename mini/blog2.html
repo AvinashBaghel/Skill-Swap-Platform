@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How SkillSwap Built a 50k-Strong Community — SkillSwap Blog</title>
+  <meta name="description" content="From a small idea to a thriving platform — learn how our community of passionate learners grew and what makes SkillSwap special." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
+  <style>
+    .article-hero { background: linear-gradient(135deg,#064e3b 0%,#065f46 50%,#047857 100%); padding: 120px 24px 60px; text-align: center; color: #fff; }
+    .article-tag { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 40px; padding: 4px 16px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; color: #6ee7b7; }
+    .article-hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; max-width: 780px; margin: 0 auto 16px; line-height: 1.25; }
+    .article-hero__meta { display: flex; align-items: center; justify-content: center; gap: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+    .article-cover { max-width: 860px; margin: -40px auto 0; border-radius: 18px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .article-cover img { width: 100%; height: 440px; object-fit: cover; display: block; }
+    .article-body { max-width: 780px; margin: 60px auto 80px; padding: 0 24px; color: var(--clr-text,#334155); font-size: 1.05rem; line-height: 1.85; }
+    .article-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--clr-dark,#0f172a); margin: 44px 0 16px; }
+    .article-body h3 { font-size: 1.15rem; font-weight: 600; color: var(--clr-dark,#0f172a); margin: 32px 0 10px; }
+    .article-body p { margin-bottom: 20px; }
+    .article-body ul, .article-body ol { margin: 0 0 20px 24px; }
+    .article-body li { margin-bottom: 10px; }
+    .article-tip { background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 28px 0; font-size: 0.95rem; }
+    .article-tip strong { color: #15803d; }
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 32px 0; }
+    .stat-box { background: var(--clr-bg-alt,#f8fafc); border-radius: 14px; padding: 20px; text-align: center; border: 1px solid var(--clr-border,#e2e8f0); }
+    .stat-box strong { display: block; font-size: 1.8rem; font-weight: 800; color: var(--clr-dark); }
+    .stat-box span { font-size: 0.8rem; color: var(--clr-text-light); }
+    .article-back { display: inline-flex; align-items: center; gap: 8px; color: #059669; font-weight: 600; text-decoration: none; margin-bottom: 40px; font-size: 0.9rem; }
+    .article-back:hover { text-decoration: underline; }
+    .article-nav { max-width: 780px; margin: 0 auto 60px; padding: 0 24px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-nav a { flex: 1; min-width: 200px; background: var(--clr-bg-alt,#f8fafc); border: 1px solid var(--clr-border,#e2e8f0); border-radius: 14px; padding: 18px 20px; text-decoration: none; color: var(--clr-text,#334155); transition: box-shadow .2s; }
+    .article-nav a:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .article-nav span { display: block; font-size: .75rem; color: var(--clr-text-light); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .06em; }
+    .article-nav strong { font-size: .95rem; color: var(--clr-dark); }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header" id="header" style="box-shadow:0 2px 20px rgba(0,0,0,.08);background:#fff;">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" id="logo">
+        <img src="images/logo.png" alt="Icon" style="height:32px;border-radius:6px;width:auto;" /> Skill<span class="logo__accent">Swap</span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="skills.html" class="nav__link">Explore Skills</a></li>
+          <li><a href="blog.html" class="nav__link active">Blog</a></li>
+          <li><a href="contact.html" class="nav__link">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="login.html" class="btn btn--outline" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn--primary" id="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="article-hero">
+    <div class="article-tag">🤝 Community</div>
+    <h1>How SkillSwap Built a 50k-Strong Community</h1>
+    <div class="article-hero__meta">
+      <span>✍️ SkillSwap Editorial</span>
+      <span>📅 March 2026</span>
+      <span>⏱️ 5 min read</span>
+    </div>
+  </div>
+
+  <div class="article-cover">
+    <img src="images/blog_community.png" alt="SkillSwap Community"
+         onerror="this.src='https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80'" />
+  </div>
+
+  <article class="article-body">
+    <a href="blog.html" class="article-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Blog
+    </a>
+
+    <p>Every great community starts with a simple belief — that people are more generous than we give them credit for. SkillSwap was born from that belief: that a guitarist in Austin and a web developer in London could help each other become better, without money changing hands.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><strong>50k+</strong><span>Active Members</span></div>
+      <div class="stat-box"><strong>10k+</strong><span>Skills Shared</span></div>
+      <div class="stat-box"><strong>100k+</strong><span>Connections Made</span></div>
+    </div>
+
+    <h2>It Started With Three People</h2>
+    <p>The first SkillSwap happened between two friends — one who played guitar and one who could code. They traded 30-minute sessions and both came away richer. Word spread, and within months a small Discord server became a bustling marketplace of knowledge.</p>
+
+    <h2>The Values That Stuck</h2>
+    <p>What made SkillSwap different from every other learning platform was its founding principle: <strong>no money, no hierarchy, no gatekeeping.</strong> A Nobel laureate and a first-year student are equally valuable here because everyone knows something someone else wants to learn.</p>
+    <ul>
+      <li><strong>Radical equality:</strong> every skill has value</li>
+      <li><strong>Generosity-first:</strong> give before you ask</li>
+      <li><strong>Quality over quantity:</strong> focus on meaningful exchanges, not metrics</li>
+    </ul>
+
+    <h2>What the Data Tells Us</h2>
+    <p>Our most successful members share three behaviours: they set up their availability clearly, they personalise their exchange requests, and they leave honest reviews. These simple habits create a flywheel of trust that has driven 94% of our growth through word of mouth alone.</p>
+
+    <div class="article-tip">
+      <strong>💚 Want to be part of it?</strong> Fill out your profile completely — members with a bio and skills listed get 4× more exchange requests. <a href="signup.html" style="color:#15803d;font-weight:600;">Join free →</a>
+    </div>
+
+    <h2>What's Next</h2>
+    <p>We're building live group sessions, skill streaks, and a peer-review system — all designed to make SkillSwap even more rewarding. The community shapes the roadmap. If you have ideas, <a href="contact.html" style="color:#059669;">reach out to us.</a></p>
+  </article>
+
+  <nav class="article-nav">
+    <a href="blog1.html">
+      <span>← Previous</span>
+      <strong>5 Proven Strategies to Become a Better Learner</strong>
+    </a>
+    <a href="blog3.html">
+      <span>Next →</span>
+      <strong>Unlocking Creativity Through Skill Exchange</strong>
+    </a>
+  </nav>
+
+  <footer class="footer" id="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">
+          <img src="images/logo.png" alt="Icon" style="height:32px;border-radius:6px;width:auto;" /> Skill<span class="logo__accent">Swap</span>
+        </a>
+        <p>SkillSwap is a free peer-to-peer platform. Teach what you know, learn what you love.</p>
+      </div>
+    </div>
+    <div class="footer__bottom"><div class="container"><p>© 2026 SkillSwap. All rights reserved.</p></div></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

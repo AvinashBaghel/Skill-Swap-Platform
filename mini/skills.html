@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore All Skills &#8211; SkillSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .page-content {
+      padding: 120px 20px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--clr-dark);
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--clr-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header" style="box-shadow: 0 2px 20px rgba(0,0,0,.08); background: #fff;">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" id="logo">
+        <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="skills.html" class="nav__link active">Explore Skills</a></li>
+          <li><a href="contact.html" class="nav__link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="login.html" class="btn btn--outline" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn--primary" id="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="page-content">
+    <div class="page-header">
+      <h1>All Available Skills</h1>
+      <p>Discover everything you can learn or share. Use the filters to find the perfect skill exchange match.</p>
+      <div style="max-width:480px;margin:20px auto 0;position:relative;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"
+          style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--clr-text-light);pointer-events:none;">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="page-search" placeholder="Search by name, skill, or title..."
+          style="width:100%;padding:12px 16px 12px 42px;border:2px solid var(--clr-border,#e2e8f0);border-radius:999px;font-family:inherit;font-size:.95rem;outline:none;transition:border-color .2s;box-sizing:border-box;"
+          onfocus="this.style.borderColor='var(--clr-orange)'" onblur="this.style.borderColor='var(--clr-border,#e2e8f0)'" />
+      </div>
+    </div>
+
+    <!-- Loading spinner (shown while fetching) -->
+    <div id="skills-loading" style="text-align:center;padding:60px 20px;">
+      <div class="spinner spinner--dark spinner--lg" style="width:36px;height:36px;border-width:3px;margin:0 auto 16px;"></div>
+      <p style="color:var(--clr-text-light);font-size:.95rem;">Loading members<span class="dots-anim"></span></p>
+    </div>
+
+    <!-- Dynamic skills grid (populated by JS) -->
+    <div class="skills__grid" id="skills-grid" style="margin-bottom: 40px; display:none;"></div>
+
+    <!-- Empty state -->
+    <div id="skills-empty" style="display:none;text-align:center;padding:60px 20px;">
+      <div style="font-size:3rem;margin-bottom:12px;">🔍</div>
+      <h3 style="font-size:1.2rem;margin-bottom:8px;">No Members Found</h3>
+      <p style="color:var(--clr-text-light);">Try a different search term or check back later.</p>
+    </div>
+
+  </main>
+
+    <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer" style="margin-top: auto;">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">
+          <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+        </a>
+        <p>SkillSwap is a free peer-to-peer platform where you teach what you know and learn what you love. Join our growing community of 50k+ lifelong learners today.</p>
+      </div>
+
+      <div class="footer__links-row">
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="skills.html">Popular Skills</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get the latest tips and community stories delivered to your inbox.</p>
+        <form class="footer__form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required id="newsletter-email" />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 SkillSwap. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ── Dynamic Skills Grid: fetch all users from backend ────────────
+    const API_BASE = 'http://localhost:5000/api';
+
+    // Category/icon mapping based on skills
+    const SKILL_CATEGORIES = {
+      'guitar':       { icon: '🎸', label: 'Music' },
+      'music':        { icon: '🎵', label: 'Music' },
+      'songwriting':  { icon: '🎶', label: 'Music' },
+      'piano':        { icon: '🎹', label: 'Music' },
+      'singing':      { icon: '🎤', label: 'Music' },
+      'web':          { icon: '💻', label: 'Tech' },
+      'react':        { icon: '⚛️', label: 'Tech' },
+      'css':          { icon: '🎨', label: 'Design' },
+      'python':       { icon: '🐍', label: 'Tech' },
+      'javascript':   { icon: '💻', label: 'Tech' },
+      'programming':  { icon: '💻', label: 'Tech' },
+      'coding':       { icon: '💻', label: 'Tech' },
+      'spanish':      { icon: '🌍', label: 'Language' },
+      'french':       { icon: '🌍', label: 'Language' },
+      'english':      { icon: '🌍', label: 'Language' },
+      'language':     { icon: '🌍', label: 'Language' },
+      'photography':  { icon: '📷', label: 'Creative' },
+      'video':        { icon: '🎬', label: 'Creative' },
+      'design':       { icon: '🎨', label: 'Design' },
+      'cooking':      { icon: '🍳', label: 'Lifestyle' },
+      'fitness':      { icon: '💪', label: 'Fitness' },
+      'yoga':         { icon: '🧘', label: 'Wellness' },
+      'writing':      { icon: '✍️', label: 'Creative' },
+      'art':          { icon: '🖌️', label: 'Creative' },
+      'math':         { icon: '📐', label: 'Academic' },
+      'science':      { icon: '🔬', label: 'Academic' },
+      'business':     { icon: '💼', label: 'Business' },
+    };
+
+    // Avatar gradient colors (cycle through for variety)
+    const AVATAR_GRADIENTS = [
+      'linear-gradient(135deg, #6366f1, #8b5cf6)',
+      'linear-gradient(135deg, #f59e0b, #ef4444)',
+      'linear-gradient(135deg, #10b981, #06b6d4)',
+      'linear-gradient(135deg, #ec4899, #8b5cf6)',
+      'linear-gradient(135deg, #0ea5e9, #6366f1)',
+      'linear-gradient(135deg, #f97316, #f59e0b)',
+      'linear-gradient(135deg, #14b8a6, #22c55e)',
+    ];
+
+    function getCategoryForUser(user) {
+      const allSkills = [...(user.offered || []), ...(user.wanted || [])].join(' ').toLowerCase();
+      for (const [keyword, cat] of Object.entries(SKILL_CATEGORIES)) {
+        if (allSkills.includes(keyword)) return cat;
+      }
+      return { icon: '✦', label: 'Skills' };
+    }
+
+    function buildStars(rating) {
+      const r = parseFloat(rating) || 0;
+      const full = Math.round(r);
+      return '★'.repeat(Math.min(full, 5)) + '☆'.repeat(Math.max(0, 5 - full));
+    }
+
+    function createSkillCard(user, index) {
+      const cat = getCategoryForUser(user);
+      const gradient = AVATAR_GRADIENTS[index % AVATAR_GRADIENTS.length];
+      const primarySkill = (user.offered && user.offered[0]) || (user.wanted && user.wanted[0]) || user.title || 'SkillSwap Member';
+      const rating = user.rating || 'New';
+      const isNew = rating === 'New' || rating === '0.0' || rating === '0';
+
+      const card = document.createElement('a');
+      card.href = `profile.html?user=${user.id}`;
+      card.className = 'skill-card animate-on-scroll';
+      card.setAttribute('data-name', (user.name || '').toLowerCase());
+      card.setAttribute('data-skills', [...(user.offered || []), ...(user.wanted || [])].join(' ').toLowerCase());
+      card.setAttribute('data-title', (user.title || '').toLowerCase());
+
+      card.innerHTML = `
+        <div class="skill-card__image" style="display:flex;align-items:center;justify-content:center;background:${gradient};position:relative;">
+          <div style="font-size:3rem;font-weight:800;color:rgba(255,255,255,0.9);letter-spacing:4px;text-shadow:0 2px 10px rgba(0,0,0,0.2);">
+            ${user.initials || '??'}
+          </div>
+          <span class="skill-card__badge">${cat.icon} ${cat.label}</span>
+        </div>
+        <div class="skill-card__body">
+          <h3 class="skill-card__title">${primarySkill}</h3>
+          <div class="skill-card__meta">
+            <div class="skill-card__instructor">
+              <div class="avatar avatar--sm" style="background:${gradient};color:#fff;font-size:0.7rem;">${user.initials || '??'}</div>
+              <span>${user.name || 'Unknown'}</span>
+            </div>
+            <div class="skill-card__rating">
+              ${isNew
+                ? '<span style="background:#f0fdf4;color:#16a34a;padding:2px 10px;border-radius:20px;font-size:.75rem;font-weight:600;">New</span>'
+                : `<span class="stars" style="color:#f59e0b;">${buildStars(rating)}</span><span>${rating}</span>`
+              }
+            </div>
+          </div>
+        </div>`;
+      return card;
+    }
+
+    (async function loadSkillsGrid() {
+      const grid    = document.getElementById('skills-grid');
+      const loading = document.getElementById('skills-loading');
+      const empty   = document.getElementById('skills-empty');
+
+      let users = [];
+
+      // 1. Try backend
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 3000);
+        const res = await fetch(`${API_BASE}/users`, {
+          headers: { 'Content-Type': 'application/json' },
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+        if (res.ok) users = await res.json();
+      } catch (_) { /* backend offline */ }
+
+      // 2. Fallback: merge localStorage users
+      const localUsers = JSON.parse(localStorage.getItem('skillSwapUsers') || '{}');
+      const userIds = new Set(users.map(u => u.id));
+      Object.entries(localUsers).forEach(([id, u]) => {
+        if (!userIds.has(id)) users.push({ ...u, id });
+      });
+
+      // 3. Exclude the logged-in user (own profile belongs in dashboard only)
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        users = users.filter(u => u.id !== currentUser);
+      }
+
+      loading.style.display = 'none';
+
+      if (users.length === 0) {
+        empty.style.display = 'block';
+        return;
+      }
+
+      // Render cards
+      users.forEach((user, i) => {
+        grid.appendChild(createSkillCard(user, i));
+      });
+
+      grid.style.display = '';
+
+      // Trigger scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      grid.querySelectorAll('.skill-card').forEach(el => observer.observe(el));
+
+      // ── Search filter ──────────────────────────────────────────────
+      const searchInput = document.getElementById('page-search');
+      const params = new URLSearchParams(window.location.search);
+      const initialSearch = params.get('search');
+      if (initialSearch) {
+        searchInput.value = initialSearch;
+        filterCards(initialSearch.toLowerCase());
+      }
+
+      searchInput.addEventListener('input', (e) => {
+        filterCards(e.target.value.toLowerCase().trim());
+      });
+
+      function filterCards(term) {
+        let anyVisible = false;
+        grid.querySelectorAll('.skill-card').forEach(card => {
+          const name   = card.getAttribute('data-name')   || '';
+          const skills = card.getAttribute('data-skills')  || '';
+          const title  = card.getAttribute('data-title')   || '';
+          const text   = card.querySelector('.skill-card__title')?.textContent.toLowerCase() || '';
+          const match  = name.includes(term) || skills.includes(term) || title.includes(term) || text.includes(term);
+          card.style.display = match ? '' : 'none';
+          if (match) anyVisible = true;
+        });
+        empty.style.display = anyVisible ? 'none' : 'block';
+      }
+    })();
+  </script>
+</body>
+</html>

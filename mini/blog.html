@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — SkillSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .page-content {
+      padding: 120px 20px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--clr-dark);
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--clr-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  </style>
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header" style="box-shadow: 0 2px 20px rgba(0,0,0,.08); background: #fff;">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" id="logo">
+        <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="skills.html" class="nav__link">Explore Skills</a></li>
+          <li><a href="contact.html" class="nav__link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="login.html" class="btn btn--outline" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn--primary" id="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="page-content">
+    <div class="page-header">
+      <h1>All Blog Posts</h1>
+      <p>Read our latest articles, tips, stories, and inspiration for lifelong learners.</p>
+    </div>
+
+    <div class="blog__grid" style="margin-bottom: 40px;">
+      <article class="blog-card" id="blog-1">
+        <div class="blog-card__image">
+          <img src="images/blog_learning.png" alt="5 Tips to become a better learner" onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80'"/>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Learning Tips</span>
+          <h3 class="blog-card__title">5 Proven Strategies to Become a Better Learner</h3>
+          <p class="blog-card__excerpt">Discover science-backed techniques that help you retain information faster and make the most out of every exchange session.</p>
+          <a href="blog1.html" class="blog-card__link">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" id="blog-2">
+        <div class="blog-card__image">
+          <img src="images/blog_community.png" alt="Building a learning community" onerror="this.src='https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80'"/>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Community</span>
+          <h3 class="blog-card__title">How SkillSwap Built a 50k-Strong Community</h3>
+          <p class="blog-card__excerpt">From a small idea to a thriving platform — learn how our community of passionate learners grew and what makes it special.</p>
+          <a href="blog2.html" class="blog-card__link">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" id="blog-3">
+        <div class="blog-card__image">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80" alt="Creativity"/>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Creativity</span>
+          <h3 class="blog-card__title">Unlocking Creativity Through Skill Exchange</h3>
+          <p class="blog-card__excerpt">Trading skills with someone outside your field can spark creativity in unexpected ways. Here's why you should try it.</p>
+          <a href="blog3.html" class="blog-card__link">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" id="blog-4">
+        <div class="blog-card__image">
+          <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80" alt="First Exchange"/>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Beginners</span>
+          <h3 class="blog-card__title">How to Prepare for Your First Skill Exchange</h3>
+          <p class="blog-card__excerpt">Nervous about your first session? We've compiled a checklist to ensure you and your partner have a productive meeting.</p>
+          <a href="blog1.html" class="blog-card__link">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" id="blog-5">
+        <div class="blog-card__image">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80" alt="Productivity"/>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Productivity</span>
+          <h3 class="blog-card__title">Time Management Tips for Busy Learners</h3>
+          <p class="blog-card__excerpt">Find out how you can seamlessly integrate skill sharing and continued learning into your hectic weekly schedule without burning out.</p>
+          <a href="blog2.html" class="blog-card__link">Read More →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" id="blog-6">
+        <div class="blog-card__image">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Remote Learning"/>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-card__tag">Remote</span>
+          <h3 class="blog-card__title">Making Remote Exchanges Feel Like In-Person</h3>
+          <p class="blog-card__excerpt">Discover the best tools and techniques for virtual sessions to match the quality and personal connection of an in-person exchange.</p>
+          <a href="blog3.html" class="blog-card__link">Read More →</a>
+        </div>
+      </article>
+    </div>
+
+  </main>
+
+    <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer" style="margin-top: auto;">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">
+          <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+        </a>
+        <p>SkillSwap is a free peer-to-peer platform where you teach what you know and learn what you love. Join our growing community of 50k+ lifelong learners today.</p>
+      </div>
+
+      <div class="footer__links-row">
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="skills.html">Popular Skills</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get the latest tips and community stories delivered to your inbox.</p>
+        <form class="footer__form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required id="newsletter-email" />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 SkillSwap. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

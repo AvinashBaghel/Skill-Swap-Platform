@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap – Teach What You Know, Learn What You Love</title>
+  <meta name="description" content="SkillSwap is a peer-to-peer skill-sharing platform where you can teach what you know and learn what you love. Connect with 50k+ active users today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" id="logo">
+        <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link active">Home</a></li>
+          <li><a href="skills.html" class="nav__link">Explore Skills</a></li>
+          <li><a href="contact.html" class="nav__link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="login.html" class="btn btn--outline" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn--primary" id="signup-btn">Sign Up</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+<!-- ===== HERO SECTION ===== -->
+  <section class="hero animate-on-scroll" id="hero" style="background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; text-align: center; color: #fff; padding: 160px 0 100px;">
+    <div class="container hero__inner" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="hero__content" style="display: flex; flex-direction: column; align-items: center; max-width: 800px;">
+        <h1 class="hero__title" style="color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Teach what you know,<br /><span class="highlight" style="color: var(--clr-blue); text-shadow: none;">Learn what you love</span></h1>
+        <p class="hero__desc" style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 32px;">SkillSwap connects passionate people to exchange knowledge, grow together, and build a community of lifelong learners. Share your expertise and pick up something new &#8211; for free.</p>
+        
+        <div class="hero__search" style="max-width: 500px; width: 100%; margin-bottom: 32px;">
+          <svg class="hero__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search skill here..." id="hero-search" style="color: var(--clr-dark); font-weight: 500;" />
+        </div>
+        
+        <div class="hero__buttons" style="justify-content: center; margin-bottom: 60px;">
+          <a href="#" class="btn btn--primary btn--lg" id="get-started-btn">Get Started</a>
+          <a href="skills.html" class="btn btn--secondary btn--lg" id="more-skills-btn" style="background: transparent; color: #fff; border-color: #fff;">More Skills</a>
+        </div>
+      </div>
+
+      <div class="hero__stats" style="position: static; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; width: 100%;">
+        <div class="stat-card" id="stat-skills" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: #fff; min-width: 160px;">
+          <span class="stat-card__icon">&#x1F4DA;</span>
+          <strong style="color: #fff;">10k+</strong>
+          <span style="color: #cbd5e1;">Skills Shared</span>
+        </div>
+        <div class="stat-card" id="stat-users" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: #fff; min-width: 160px;">
+          <span class="stat-card__icon">&#x1F465;</span>
+          <strong style="color: #fff;">50k+</strong>
+          <span style="color: #cbd5e1;">Active Users</span>
+        </div>
+        <div class="stat-card" id="stat-connections" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: #fff; min-width: 160px;">
+          <span class="stat-card__icon">&#x1F91D;</span>
+          <strong style="color: #fff;">100k+</strong>
+          <span style="color: #cbd5e1;">Connections Made</span>
+        </div>
+        <div class="stat-card" id="stat-rating" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: #fff; min-width: 160px;">
+          <span class="stat-card__icon">&#x2B50;</span>
+          <strong style="color: #fff;">4.9</strong>
+          <span style="color: #cbd5e1;">Average Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+ 
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">How SkillSwap Works</h2>
+        <p class="section-subtitle">Three simple steps to start your skill-sharing journey.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step" id="step-find">
+          <div class="step__icon">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" fill="var(--clr-orange-light)"/><circle cx="28" cy="28" r="10" stroke="currentColor" stroke-width="2.5" fill="none"/><line x1="35" y1="35" x2="46" y2="46" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="step__number">01</div>
+          <h3 class="step__title">Find &amp; Connect</h3>
+          <p class="step__desc">Browse thousands of skills shared by real people. Filter by category, rating, or location and send a connection request.</p>
+        </div>
+        <div class="step__connector"><span></span></div>
+        <div class="step" id="step-plan">
+          <div class="step__icon">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" fill="var(--clr-blue-light)"/><rect x="18" y="16" width="28" height="32" rx="3" stroke="currentColor" stroke-width="2.5" fill="none"/><line x1="24" y1="26" x2="40" y2="26" stroke="currentColor" stroke-width="2"/><line x1="24" y1="32" x2="36" y2="32" stroke="currentColor" stroke-width="2"/><line x1="24" y1="38" x2="32" y2="38" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div class="step__number">02</div>
+          <h3 class="step__title">Plan &amp; Exchange</h3>
+          <p class="step__desc">Agree on a schedule, set learning goals, and decide what each person will teach. Flexible, fun, and fair.</p>
+        </div>
+        <div class="step__connector"><span></span></div>
+        <div class="step" id="step-learn">
+          <div class="step__icon">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" fill="var(--clr-orange-light)"/><path d="M20 44 L32 20 L44 44" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><line x1="24" y1="38" x2="40" y2="38" stroke="currentColor" stroke-width="2.5"/></svg>
+          </div>
+          <div class="step__number">03</div>
+          <h3 class="step__title">Learn &amp; Teach</h3>
+          <p class="step__desc">Start your exchange sessions! Learn a new skill while sharing yours. Grow together and leave reviews for each other.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">What Our Community Says</h2>
+        <p class="section-subtitle">Hear from members who transformed their learning journey with SkillSwap.</p>
+      </div>
+
+      <div class="testimonials__grid">
+        <div class="testimonial-card" id="testimonial-1">
+          <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-card__text">"SkillSwap completely changed the way I learn. I traded my web design skills for guitar lessons, and it was the best decision I ever made. The community is incredibly welcoming!"</p>
+          <div class="testimonial-card__author">
+            <div class="avatar">AD</div>
+            <div>
+              <strong>Alex Donovan</strong>
+              <span>Web Designer &amp; Guitar Enthusiast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-2">
+          <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-card__text">"I've been teaching Spanish for years, but learning photography through SkillSwap was a game-changer. The platform makes it so easy to connect with people who are genuinely passionate."</p>
+          <div class="testimonial-card__author">
+            <div class="avatar">MC</div>
+            <div>
+              <strong>Maria Cruz</strong>
+              <span>Language Teacher &amp; Photographer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="testimonial-3">
+          <div class="testimonial-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-card__text">"As a data scientist, I never thought I'd learn cooking from a chef in exchange for Python lessons. SkillSwap makes unlikely connections happen every day!"</p>
+          <div class="testimonial-card__author">
+            <div class="avatar">RP</div>
+            <div>
+              <strong>Raj Patel</strong>
+              <span>Data Scientist &amp; Home Cook</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="testimonial-form-container" class="animate-on-scroll" style="margin-top: 40px; text-align: center;">
+        <!-- Filled by JS depending on auth state -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Got questions? We've got answers.</p>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq-item" id="faq-1">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>Is SkillSwap free to use?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Yes! SkillSwap is 100 % free. Our mission is to make knowledge accessible to everyone. You can create a profile, list your skills, and start exchanging without paying a dime.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-2">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>How do I find someone to exchange skills with?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Use our search and filter tools to find people offering skills you want to learn. You can filter by category, location, rating, and availability. Then just send a connection request!</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-3">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>What if I'm a complete beginner?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Everyone starts somewhere! Many of our community members specifically enjoy teaching beginners. Just be upfront about your level and you'll find plenty of patient and enthusiastic teachers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-4">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>Can I exchange skills online or only in person?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>Both! SkillSwap supports online video sessions, in-person meetups, or a hybrid approach. You and your partner decide what works best for your schedules.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" id="faq-5">
+          <button class="faq-item__question" aria-expanded="false">
+            <span>How does the rating system work?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__answer">
+            <p>After each exchange session, both participants rate each other on a 5-star scale and leave a short review. This helps maintain quality and builds trust within the community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG ===== -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">From Our Blog</h2>
+        <p class="section-subtitle">Tips, stories, and inspiration for lifelong learners.</p>
+      </div>
+
+      <div class="blog__grid">
+        <article class="blog-card" id="blog-1">
+          <div class="blog-card__image">
+            <img src="images/blog_learning.png" alt="5 Tips to become a better learner" />
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">Learning Tips</span>
+            <h3 class="blog-card__title">5 Proven Strategies to Become a Better Learner</h3>
+            <p class="blog-card__excerpt">Discover science-backed techniques that help you retain information faster and make the most out of every exchange session.</p>
+            <a href="blog1.html" class="blog-card__link">Read More &#8594;</a>
+          </div>
+        </article>
+
+        <article class="blog-card" id="blog-2">
+          <div class="blog-card__image">
+            <img src="images/blog_community.png" alt="Building a learning community" />
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">Community</span>
+            <h3 class="blog-card__title">How SkillSwap Built a 50k-Strong Community</h3>
+            <p class="blog-card__excerpt">From a small idea to a thriving platform &#8211; learn how our community of passionate learners grew and what makes it special.</p>
+            <a href="blog2.html" class="blog-card__link">Read More &#8594;</a>
+          </div>
+        </article>
+
+        <article class="blog-card" id="blog-3">
+          <div class="blog-card__image">
+            <div class="blog-card__placeholder">
+              <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" stroke="var(--clr-orange)" stroke-width="2" fill="var(--clr-orange-light)"/><path d="M28 52 L40 24 L52 52" stroke="var(--clr-orange)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="34" r="6" stroke="var(--clr-blue)" stroke-width="2" fill="var(--clr-blue-light)"/></svg>
+            </div>
+          </div>
+          <div class="blog-card__body">
+            <span class="blog-card__tag">Creativity</span>
+            <h3 class="blog-card__title">Unlocking Creativity Through Skill Exchange</h3>
+            <p class="blog-card__excerpt">Trading skills with someone outside your field can spark creativity in unexpected ways. Here's why you should try it.</p>
+            <a href="blog3.html" class="blog-card__link">Read More &#8594;</a>
+          </div>
+        </article>
+      </div>
+      <div class="blog__action" style="text-align: center; margin-top: 40px;">
+        <a href="blog.html" class="btn btn--primary" id="view-all-blog-btn">View All Posts</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer" style="margin-top: auto;">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">
+          <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+        </a>
+        <p>SkillSwap is a free peer-to-peer platform where you teach what you know and learn what you love. Join our growing community of 50k+ lifelong learners today.</p>
+      </div>
+
+      <div class="footer__links-row">
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="skills.html">Popular Skills</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get the latest tips and community stories delivered to your inbox.</p>
+        <form class="footer__form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required id="newsletter-email" />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 SkillSwap. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>

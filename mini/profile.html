@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap — User Profile</title>
+  <meta name="description" content="View and connect with skilled community members on SkillSwap." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
+
+  <style>
+    /* ===== FULL-PAGE PROFILE (other user view) ===== */
+    .profile-hero {
+      width: 100%;
+      min-height: 340px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f4c81 100%);
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(99,102,241,0.35) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(16,185,129,0.2) 0%, transparent 60%);
+    }
+    .profile-hero__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.18;
+    }
+    .profile-hero__orb--1 { width: 400px; height: 400px; background: #6366f1; top: -120px; right: 80px; }
+    .profile-hero__orb--2 { width: 280px; height: 280px; background: #10b981; bottom: -60px; left: 120px; }
+
+    .profile-hero__inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 110px 40px 44px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .profile-hero__avatar-wrap {
+      flex-shrink: 0;
+    }
+    .profile-hero__avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--clr-orange), var(--clr-blue));
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid rgba(255,255,255,0.9);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+      letter-spacing: 2px;
+    }
+    .profile-hero__meta {
+      padding-bottom: 28px;
+      color: #fff;
+    }
+    .profile-hero__name {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .profile-hero__title {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      margin: 0 0 16px;
+    }
+    .profile-hero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .profile-hero__badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      border-radius: 40px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ===== FULL-PAGE PROFILE BODY ===== */
+    .profile-full-body {
+      background: var(--clr-bg-alt, #f8fafc);
+      min-height: calc(100vh - 280px);
+      padding: 48px 32px 80px;
+    }
+    .profile-full-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 768px) {
+      .profile-full-grid { grid-template-columns: 1fr; }
+      .profile-hero__inner { flex-direction: column; align-items: center; text-align: center; padding-top: 100px; padding-bottom: 32px; }
+      .profile-hero__avatar { width: 86px; height: 86px; font-size: 1.7rem; }
+      .profile-hero__name { font-size: 1.6rem; }
+      .profile-hero__badges { justify-content: center; }
+      .profile-full-body { padding: 60px 16px 60px; }
+    }
+
+    /* ─── Profile Cards ─── */
+    .pcard {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .pcard__head {
+      padding: 20px 24px 14px;
+      border-bottom: 1px solid var(--clr-border, #e2e8f0);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pcard__head-icon {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .pcard__head-icon--blue  { background: #eff6ff; }
+    .pcard__head-icon--green { background: #f0fdf4; }
+    .pcard__head-icon--orange{ background: #fff7ed; }
+    .pcard__head-icon--purple{ background: #faf5ff; }
+    .pcard__title { font-size: 0.95rem; font-weight: 600; color: var(--clr-dark,#0f172a); }
+    .pcard__body { padding: 20px 24px 24px; }
+
+    /* ─── Stats Row ─── */
+    .pstats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pstat {
+      text-align: center;
+      background: var(--clr-bg-alt, #f8fafc);
+      border-radius: 12px;
+      padding: 14px 8px;
+    }
+    .pstat__value { font-size: 1.4rem; font-weight: 700; color: var(--clr-dark,#0f172a); display: block; }
+    .pstat__label { font-size: 0.75rem; color: var(--clr-text-light,#64748b); margin-top: 2px; }
+
+    /* ─── Tags ─── */
+    .ptags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ptag {
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .ptag--offered { background: #eff6ff; color: #2563eb; }
+    .ptag--wanted  { background: #f0fdf4; color: #16a34a; }
+
+    /* ─── Availability ─── */
+    .avail-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .avail-chip  { padding: 4px 12px; border-radius: 40px; font-size: 0.78rem; font-weight: 500;
+                   background: var(--clr-bg-alt,#f8fafc); color: var(--clr-text-light,#64748b); border: 1.5px solid var(--clr-border,#e2e8f0); }
+    .avail-chip--on { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+    .avail-time-row { font-size: 0.83rem; color: var(--clr-text-light,#64748b); display: flex; align-items: center; gap: 6px; }
+
+    /* ─── Action strip ─── */
+    .paction-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 24px 24px;
+    }
+
+    /* ─── Right column stacks ─── */
+    .profile-right { display: flex; flex-direction: column; gap: 24px; }
+
+    /* ─── Own Profile Layout (two-column sidebar + requests) ─── */
+    .profile-page { padding: 100px 0 60px; background: var(--clr-bg-alt,#f8fafc); min-height: 100vh; }
+    .profile-page__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .profile-page__inner { grid-template-columns: 1fr; }
+    }
+    /* ─── Chat loading spinner animation ─── */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray">
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="header" id="header" style="box-shadow: 0 2px 20px rgba(0,0,0,.08);">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" id="logo">
+        <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="skills.html" class="nav__link">Explore Skills</a></li>
+          <li><a href="contact.html" class="nav__link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="login.html" class="btn btn--outline" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn--primary" id="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PROFILE VIEW (Single unified layout)
+       ============================================================ -->
+  <div id="view-other" style="display:none;">
+
+    <!-- Hero Banner -->
+    <section class="profile-hero" id="profile-hero">
+      <div class="profile-hero__orb profile-hero__orb--1"></div>
+      <div class="profile-hero__orb profile-hero__orb--2"></div>
+      <div class="profile-hero__inner">
+        <div class="profile-hero__avatar-wrap">
+          <div class="profile-hero__avatar" id="hero-avatar">??</div>
+        </div>
+        <div class="profile-hero__meta">
+          <h1 class="profile-hero__name" id="hero-name"><span class="spinner" style="width:18px;height:18px;border-color:rgba(255,255,255,0.3);border-top-color:#fff;margin-right:10px;"></span>Loading<span class="dots-anim"></span></h1>
+          <p class="profile-hero__title" id="hero-title">---</p>
+          <div class="profile-hero__badges" id="hero-badges"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wide body -->
+    <div class="profile-full-body">
+      <div class="profile-full-grid">
+
+        <!-- LEFT COLUMN -->
+        <div style="display:flex;flex-direction:column;gap:24px;">
+
+          <!-- Stats card -->
+          <div class="pcard">
+            <div class="pcard__head">
+              <div class="pcard__head-icon pcard__head-icon--blue">📊</div>
+              <span class="pcard__title">Profile Stats</span>
+            </div>
+            <div class="pcard__body">
+              <div class="pstats">
+                <div class="pstat">
+                  <span class="pstat__value" id="fp-rating">0.0</span>
+                  <span class="pstat__label">Rating ⭐</span>
+                </div>
+                <div class="pstat">
+                  <span class="pstat__value" id="fp-exchanges">0</span>
+                  <span class="pstat__label">Exchanges</span>
+                </div>
+                <div class="pstat">
+                  <span class="pstat__value" id="fp-location" style="font-size:0.95rem;">---</span>
+                  <span class="pstat__label">Location 📍</span>
+                </div>
+              </div>
+
+              <!-- Availability -->
+              <div style="margin-top:8px;">
+                <p style="font-size:0.8rem;font-weight:600;color:var(--clr-text-light);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">🕐 Availability</p>
+                <div class="availability-display" id="fp-availability">
+                  <p style="font-size:.85rem;color:var(--clr-text-light);">Not set yet</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="paction-strip">
+              <div id="fp-send-request-area"></div>
+            </div>
+          </div>
+
+          <!-- About card -->
+          <div class="pcard">
+            <div class="pcard__head">
+              <div class="pcard__head-icon pcard__head-icon--purple">👤</div>
+              <span class="pcard__title">About Me</span>
+            </div>
+            <div class="pcard__body">
+              <p id="fp-bio" style="font-size:.9rem;line-height:1.7;color:var(--clr-text-light);">---</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="profile-right">
+
+          <!-- Skills Offered -->
+          <div class="pcard">
+            <div class="pcard__head">
+              <div class="pcard__head-icon pcard__head-icon--blue">🎓</div>
+              <span class="pcard__title">Skills Offered</span>
+            </div>
+            <div class="pcard__body">
+              <div class="ptags" id="fp-offered"></div>
+            </div>
+          </div>
+
+          <!-- Skills Wanted -->
+          <div class="pcard">
+            <div class="pcard__head">
+              <div class="pcard__head-icon pcard__head-icon--green">🌱</div>
+              <span class="pcard__title">Skills Wanted</span>
+            </div>
+            <div class="pcard__body">
+              <div class="ptags" id="fp-wanted"></div>
+            </div>
+          </div>
+
+          <!-- Own Profile Extras (Requests Panel) -->
+          <main class="requests-panel" id="requests-section" style="display:none; background:#fff; border-radius:18px; box-shadow:0 2px 20px rgba(0,0,0,0.06); overflow:hidden;">
+            <div class="requests-panel__tabs" style="border-bottom:1px solid #e2e8f0; display:flex;">
+              <button class="requests-tab active" id="tab-received" data-tab="received">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                  <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                  <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
+                </svg>
+                <span>Requests Received</span>
+                <span class="requests-tab__badge" id="badge-received">0</span>
+              </button>
+              <button class="requests-tab" id="tab-sent" data-tab="sent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Requests Sent</span>
+                <span class="requests-tab__badge" id="badge-sent">0</span>
+              </button>
+            </div>
+
+            <div class="requests-panel__content active" id="content-received">
+              <div class="requests-empty" id="empty-received" style="text-align:center; padding:40px 20px;">
+                <div class="requests-empty__icon" style="font-size:3rem; margin-bottom:12px;">📬</div>
+                <h3 style="font-size:1.1rem; margin-bottom:8px;">No Requests Yet</h3>
+                <p style="color:var(--clr-text-light); font-size:0.95rem;">When someone sends you a skill exchange request, it will appear here.</p>
+              </div>
+              <div class="requests-list" id="list-received"></div>
+            </div>
+
+            <div class="requests-panel__content" id="content-sent" style="display:none;">
+              <div class="requests-empty" id="empty-sent" style="text-align:center; padding:40px 20px;">
+                <div class="requests-empty__icon" style="font-size:3rem; margin-bottom:12px;">📤</div>
+                <h3 style="font-size:1.1rem; margin-bottom:8px;">No Requests Sent</h3>
+                <p style="color:var(--clr-text-light); font-size:0.95rem;">Explore skills and send exchange requests to other members!</p>
+              </div>
+              <div class="requests-list" id="list-sent"></div>
+            </div>
+          </main>
+
+          <!-- Chat CTA Card -->
+          <div class="pcard" id="fp-chat-card">
+            <div class="pcard__head">
+              <div class="pcard__head-icon pcard__head-icon--orange">💬</div>
+              <span class="pcard__title">Start a Conversation</span>
+            </div>
+            <div class="pcard__body" style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;">
+              <p id="fp-greeting" style="font-size:.9rem;line-height:1.6;color:var(--clr-text-light);font-style:italic;">---</p>
+              <button id="chat-toggle-btn" class="btn btn--primary" style="display:none;gap:8px;align-items:center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+                Chat with <span id="chat-toggle-name">…</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <!-- ===== EDIT PROFILE MODAL ===== -->
+  <div class="modal-overlay" id="edit-modal" aria-hidden="true">
+    <div class="modal" style="max-width:520px;">
+      <button class="modal__close" id="edit-modal-close">&times;</button>
+      <div class="modal__cover" style="height:80px; background: linear-gradient(135deg, var(--clr-orange) 0%, var(--clr-blue) 100%);"></div>
+      <div class="modal__body" style="padding: 24px 28px 32px;">
+        <h3 class="modal__name" style="margin-bottom:4px;">Edit Profile</h3>
+        <p class="modal__title" style="margin-bottom:24px;">Update your details so others can find and connect with you.</p>
+
+        <form id="edit-profile-form" class="edit-form">
+          <div class="edit-form__group">
+            <label for="edit-name">Full Name</label>
+            <input type="text" id="edit-name" placeholder="Your full name" required />
+          </div>
+          <div class="edit-form__group">
+            <label for="edit-title">Title / Role</label>
+            <input type="text" id="edit-title" placeholder="e.g. Frontend Developer, Music Teacher" />
+          </div>
+          <div class="edit-form__group">
+            <label for="edit-bio">About Me</label>
+            <textarea id="edit-bio" rows="3" placeholder="Tell others about yourself..."></textarea>
+          </div>
+          <div class="edit-form__group">
+            <label for="edit-location">Location</label>
+            <input type="text" id="edit-location" placeholder="e.g. New Delhi, India" />
+          </div>
+          <div class="edit-form__group">
+            <label for="edit-offered">Skills Offered <small>(comma-separated)</small></label>
+            <input type="text" id="edit-offered" placeholder="e.g. Guitar, Web Design, Cooking" />
+          </div>
+          <div class="edit-form__group">
+            <label for="edit-wanted">Skills Wanted <small>(comma-separated)</small></label>
+            <input type="text" id="edit-wanted" placeholder="e.g. Spanish, Photography, Python" />
+          </div>
+          <div class="edit-form__group">
+            <label>Availability</label>
+            <div class="edit-form__availability">
+              <div class="edit-form__avail-days">
+                <label class="avail-day-chip"><input type="checkbox" value="Mon" /><span>Mon</span></label>
+                <label class="avail-day-chip"><input type="checkbox" value="Tue" /><span>Tue</span></label>
+                <label class="avail-day-chip"><input type="checkbox" value="Wed" /><span>Wed</span></label>
+                <label class="avail-day-chip"><input type="checkbox" value="Thu" /><span>Thu</span></label>
+                <label class="avail-day-chip"><input type="checkbox" value="Fri" /><span>Fri</span></label>
+                <label class="avail-day-chip"><input type="checkbox" value="Sat" /><span>Sat</span></label>
+                <label class="avail-day-chip"><input type="checkbox" value="Sun" /><span>Sun</span></label>
+              </div>
+              <div class="edit-form__avail-time">
+                <div class="edit-form__time-row">
+                  <label for="edit-time-from">From</label>
+                  <input type="time" id="edit-time-from" value="09:00" />
+                </div>
+                <div class="edit-form__time-row">
+                  <label for="edit-time-to">To</label>
+                  <input type="time" id="edit-time-to" value="18:00" />
+                </div>
+              </div>
+              <div class="edit-form__group" style="margin-top:8px;margin-bottom:0;">
+                <label for="edit-timezone">Timezone</label>
+                <select id="edit-timezone">
+                  <option value="IST (UTC+5:30)">IST (UTC+5:30)</option>
+                  <option value="EST (UTC-5)">EST (UTC-5)</option>
+                  <option value="PST (UTC-8)">PST (UTC-8)</option>
+                  <option value="GMT (UTC+0)">GMT (UTC+0)</option>
+                  <option value="CET (UTC+1)">CET (UTC+1)</option>
+                  <option value="JST (UTC+9)">JST (UTC+9)</option>
+                  <option value="AEST (UTC+10)">AEST (UTC+10)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="edit-form__actions">
+            <button type="button" class="btn btn--outline" id="edit-cancel-btn">Cancel</button>
+            <button type="submit" class="btn btn--primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SEND REQUEST MODAL ===== -->
+  <div class="modal-overlay" id="request-modal" aria-hidden="true">
+    <div class="modal" style="max-width:500px;">
+      <button class="modal__close" id="request-modal-close">&times;</button>
+      <div class="modal__cover" style="height:70px; background: linear-gradient(135deg, #6366f1 0%, #10b981 100%); display:flex; align-items:flex-end; padding:0 24px 14px;">
+        <h3 style="color:#fff; font-size:1.1rem; font-weight:600;">Send Skill Exchange Request</h3>
+      </div>
+      <div class="modal__body" style="padding: 24px 28px 28px;">
+        <div class="req-modal__target">
+          <div class="avatar avatar--sm" id="req-target-avatar">??</div>
+          <div>
+            <strong id="req-target-name">User</strong>
+            <span id="req-target-title" style="display:block;font-size:.8rem;color:var(--clr-text-light);">---</span>
+          </div>
+        </div>
+        <div class="req-modal__section">
+          <label class="req-modal__label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Skills I want to learn from them
+          </label>
+          <div class="req-modal__chips" id="req-learn-chips"></div>
+        </div>
+        <div class="req-modal__section">
+          <label class="req-modal__label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            Skills I can teach them
+          </label>
+          <div class="req-modal__chips" id="req-teach-chips"></div>
+        </div>
+        <div class="req-modal__section">
+          <label class="req-modal__label" for="req-message">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Personal Message
+          </label>
+          <textarea id="req-message" rows="3" class="req-modal__textarea" placeholder="Hi! I'd love to exchange skills with you..."></textarea>
+        </div>
+        <div class="req-modal__actions">
+          <button type="button" class="btn btn--outline" id="req-cancel-btn">Cancel</button>
+          <button type="button" class="btn btn--primary" id="req-send-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Request
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="chat-popup" id="chat-section"
+    style="position:fixed;bottom:24px;right:24px;width:440px;height:600px;max-height:calc(100vh - 100px);background:var(--clr-bg);border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.05);display:flex;flex-direction:column;z-index:1000;overflow:hidden;transform:translateY(120%) scale(0.95);opacity:0;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);">
+    <div class="chat-app__header" style="justify-content:space-between;padding:18px 20px;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:#fff;flex-shrink:0;">
+      <div class="chat-app__status" style="display:flex;align-items:center;gap:10px;">
+        <div style="width:10px;height:10px;background:#10b981;border-radius:50%;box-shadow:0 0 6px rgba(16,185,129,0.6);"></div>
+        <span style="font-size:0.95rem;">Chatting with <strong id="chat-header-name">…</strong></span>
+      </div>
+      <button id="close-chat-btn" style="background:rgba(255,255,255,0.15);border:none;color:#fff;cursor:pointer;border-radius:8px;padding:6px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="chat-app__messages" id="chat-messages" style="flex:1;min-height:0;overflow-y:auto;padding:16px 18px;"></div>
+    <form class="chat-app__input-area" id="chat-form" style="padding:14px 18px;border-top:1px solid var(--clr-border,#e2e8f0);display:flex;gap:10px;align-items:center;flex-shrink:0;background:var(--clr-bg,#fff);">
+      <input type="text" id="chat-input" placeholder="Type a message..." required autocomplete="off" style="flex:1;padding:12px 16px;border:2px solid var(--clr-border,#e2e8f0);border-radius:12px;font-size:0.9rem;outline:none;transition:border-color 0.2s;font-family:inherit;" onfocus="this.style.borderColor='#6366f1'" onblur="this.style.borderColor='var(--clr-border,#e2e8f0)'" />
+      <button type="submit" class="btn btn--primary" id="chat-send" style="padding:12px;border-radius:12px;display:flex;align-items:center;justify-content:center;min-width:46px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </form>
+  </aside>
+
+  <!-- ===== FEEDBACK / END SESSION MODAL ===== -->
+  <div class="modal-overlay" id="feedback-modal" aria-hidden="true">
+    <div class="modal" style="max-width:480px;">
+      <button class="modal__close" id="feedback-modal-close">&times;</button>
+      <div class="modal__cover" style="height:70px; background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%); display:flex; align-items:flex-end; padding:0 24px 14px;">
+        <h3 style="color:#fff; font-size:1.1rem; font-weight:600;">End Session & Give Feedback</h3>
+      </div>
+      <div class="modal__body" style="padding: 24px 28px 28px;">
+        <div class="feedback-modal__target" style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--clr-border,#e2e8f0);">
+          <div class="avatar avatar--sm" id="feedback-target-avatar">??</div>
+          <div>
+            <strong id="feedback-target-name">User</strong>
+            <span id="feedback-target-title" style="display:block;font-size:.8rem;color:var(--clr-text-light);">---</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <p style="font-size:.85rem;font-weight:600;color:var(--clr-text);margin-bottom:10px;">Rate your experience</p>
+          <div id="feedback-star-picker" style="display:flex;gap:6px;" role="radiogroup" aria-label="Feedback rating">
+            <span data-val="1" style="font-size:2rem;cursor:pointer;color:#d1d5db;transition:color .15s;" title="1 star">&#9733;</span>
+            <span data-val="2" style="font-size:2rem;cursor:pointer;color:#d1d5db;transition:color .15s;" title="2 stars">&#9733;</span>
+            <span data-val="3" style="font-size:2rem;cursor:pointer;color:#d1d5db;transition:color .15s;" title="3 stars">&#9733;</span>
+            <span data-val="4" style="font-size:2rem;cursor:pointer;color:#d1d5db;transition:color .15s;" title="4 stars">&#9733;</span>
+            <span data-val="5" style="font-size:2rem;cursor:pointer;color:#d1d5db;transition:color .15s;" title="5 stars">&#9733;</span>
+          </div>
+          <input type="hidden" id="feedback-star-value" value="0" />
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <label for="feedback-text" style="font-size:.85rem;font-weight:600;color:var(--clr-text);display:block;margin-bottom:8px;">How was the session?</label>
+          <textarea id="feedback-text" rows="3" placeholder="Share your experience — what did you learn? How was the teaching?"
+            style="width:100%;padding:12px;border:2px solid var(--clr-border,#e2e8f0);border-radius:12px;font-family:inherit;font-size:.9rem;outline:none;box-sizing:border-box;resize:vertical;transition:border-color .2s;"
+            onfocus="this.style.borderColor='#f59e0b'" onblur="this.style.borderColor='var(--clr-border,#e2e8f0)'"></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;">
+          <button type="button" class="btn btn--outline" id="feedback-cancel-btn" style="flex:1;">Cancel</button>
+          <button type="button" class="btn btn--primary" id="feedback-submit-btn" style="flex:1;background:linear-gradient(135deg,#f59e0b,#10b981);border:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-right:6px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Submit & End Session
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer" style="margin-top: auto;">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">
+          <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+        </a>
+        <p>SkillSwap is a free peer-to-peer platform where you teach what you know and learn what you love. Join our growing community of 50k+ lifelong learners today.</p>
+      </div>
+
+      <div class="footer__links-row">
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="skills.html">Popular Skills</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get the latest tips and community stories delivered to your inbox.</p>
+        <form class="footer__form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required id="newsletter-email" />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 SkillSwap. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase JS CDN (must load BEFORE our scripts) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <!-- Supabase config (creates the client) -->
+  <script src="supabase-config.js"></script>
+  <!-- Supabase chat module (fetch, send, subscribe) -->
+  <script src="supabase-chat.js"></script>
+  <!-- Main profile script -->
+  <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — SkillSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    .page-content {
+      padding: 120px 20px 80px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .page-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+      color: var(--clr-dark);
+    }
+    .page-content p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--clr-text-light);
+      margin-bottom: 20px;
+    }
+  </style>
+  <link rel="shortcut icon" type="image/png" href="images/logo.png" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header" style="box-shadow: 0 2px 20px rgba(0,0,0,.08); background: #fff;">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" id="logo">
+        <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav__list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="skills.html" class="nav__link">Explore Skills</a></li>
+          <li><a href="contact.html" class="nav__link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a href="login.html" class="btn btn--outline" id="login-btn">Login</a>
+        <a href="signup.html" class="btn btn--primary" id="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
+  <main class="page-content">
+    <h1>About SkillSwap</h1>
+    <p>SkillSwap is a peer-to-peer skill-sharing platform where you can teach what you know and learn what you love. We believe that everyone has something valuable to teach and that education should be accessible, engaging, and community-driven.</p>
+    <p>Founded in 2026, SkillSwap has grown into a vibrant community of over 50,000 active users from around the globe. Whether you want to pick up the guitar, master web development, or learn a new language, our platform pairs you with enthusiastic members ready to exchange knowledge.</p>
+    <p>Our mission is to break down traditional barriers to learning, making skill acquisition a collaborative and joyful experience. By trading skills instead of money, we foster meaningful connections and empower individuals to grow both personally and professionally.</p>
+    <p>Join us today, and let's learn together!</p>
+  </main>
+
+    <!-- ===== FOOTER ===== -->
+  <footer class="footer" id="footer" style="margin-top: auto;">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="index.html" class="logo logo--light">
+          <img src="images/logo.png" alt="Icon" style="height: 32px; border-radius: 6px; width: auto;" /> Skill<span class="logo__accent">Swap</span>
+        </a>
+        <p>SkillSwap is a free peer-to-peer platform where you teach what you know and learn what you love. Join our growing community of 50k+ lifelong learners today.</p>
+      </div>
+
+      <div class="footer__links-row">
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="skills.html">Popular Skills</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get the latest tips and community stories delivered to your inbox.</p>
+        <form class="footer__form" id="newsletter-form">
+          <input type="email" placeholder="Your email address" required id="newsletter-email" />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 SkillSwap. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
